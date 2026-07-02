@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html manifest="./PSFree.manifest">
+  <head>
+    <script>
+        function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="Instalando caché offline: " + Percent + "%";}
+        function DisplayCacheProgress(){setTimeout(function(){;document.title="¡Caché exitoso!";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+    </script>
+    <meta charset="UTF-8">
+    <title>PS4 - Pirateria</title>
+    <link rel='stylesheet' href='./css/index.css'>
+  </head>
+  <body>
+    <!-- Menú Flotante -->
+    <div class="floating-menu">
+      <button onclick="showpayloads()" class="menu-btn" id="payloadsbtn">Payloads</button>
+      <button class="menu-btn" id="generate-cache-btn">Forzar-Caché</button>
+      <button class="menu-btn" id="update-exploit">Actualizar-Exploit</button>
+      <button onclick="showsettings()" class="menu-btn" id="settings-btn">Ajustes</button>
+      <button onclick="showabout()" class="menu-btn" id="about-btn">Acerca de</button>
+    </div>
+
+    <div class="header">
+      <div class="header-title" id="header-title">Créditos TITO PRO</div>
+    </div>
+
+    <pre id="update-results" style="white-space: pre-wrap; margin-top: 10px;"></pre>
+
+    <h2 id="PS4FW">PS4 - Pirateria</h2>
+
+    <div id="jailbreak-page">
+      <div class="center-btn-wrap">
+        <button id="jailbreak" class="ps-btn" title="PlayStation">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M0.69116 21.9548C-0.506476 22.7935 -0.284724 24.2384 2.44769 25.1419C5.18011 26.0455 8.35603 26.2323 11.1505 25.729C11.0707 25.729 11.3102 25.729 11.1505 25.729V22.8774L8.43588 23.8C7.39792 24.1355 6.35997 24.2194 5.32202 23.9677C4.5236 23.7161 4.68328 23.2129 5.64139 22.7935L11.1505 20.7806V17.6774L3.48565 20.4452C2.52754 20.7806 1.56943 21.2839 0.69116 21.9548ZM19.2146 9.37419V17.5097C22.4881 19.1871 25.0431 17.5097 25.0431 13.1484C25.0431 8.70323 23.5261 6.69032 19.1348 5.09677C16.8193 4.25806 14.4241 3.50323 12.0288 3V27.2387L17.6178 29V8.61935C17.6178 7.69677 17.6178 7.02581 18.2565 7.27742C19.1348 7.52903 19.2146 8.45161 19.2146 9.37419ZM29.5941 20.0258C27.2787 19.1871 24.8036 18.8516 22.4083 19.1032C21.0779 19.1906 19.8294 19.5869 18.5759 20.0258V23.2968L23.7656 21.2839C24.8036 20.9484 25.8415 20.8645 26.8795 21.1161C27.6779 21.3677 27.5182 21.871 26.5601 22.2903L18.5759 25.3935V28.5806L29.5941 24.3032C30.3925 23.9677 31.1111 23.5484 31.7499 22.8774C32.3088 22.0387 32.0692 20.8645 29.5941 20.0258Z"></path> </g></svg>
+        </button>
+      </div>
+      <div class="loader" id="loader" style="display: none;">
+        <div class="loader-circle"></div>
+      </div>
+    </div>
+    
+    <div id="payloads-page" style="display: none;">
+      <nav class="floating-menu-payloads">
+        <button id="toolb" onclick="showtoolspayloads()">Herramientas</button>
+        <button id="gameb" onclick="showgamepayloads()">Juegos</button>
+        <button style="display: none;" id="linuxb" onclick="showlinuxpayloads()">Linux</button>
+      </nav>
+      <div id="payloads-tools" style="display: block;">
+        <h2 id="tools">Herramientas</h2>
+          <div class="button-container" id="button-container">
+            <button id="binloader">Cargador-Bin</button>
+            <button data-func="load_AppDumper">Volcado-App</button>
+            <button data-func="load_KernelDumper">Volcado-Kernel</button>
+            <button data-func="load_VTXDumper">Volcado-PS4-VTX</button>
+            <button data-func="load_App2USB">App2USB</button>
+            <button data-func="load_DisableUpdates">Desactivar-Actualiz.</button>
+            <button data-func="load_EnableUpdates">Activar-Actualiz.</button>
+            <button data-func="load_FTP">FTP</button>
+            <button data-func="load_HistoryBlocker">Bloqueo-Historial</button>
+            <button data-func="load_KernelClock">Reloj-Kernel</button>
+            <button data-func="load_PS4Debug">PS4-Debug</button>
+            <button data-func="load_ToDex">A-Dex</button>
+            <button data-func="load_ToDev">A-Dev</button>
+            <button data-func="load_ToKratos">A-Kratos</button>
+            <button data-func="load_ToCex">A-Cex</button>
+            <button data-func="load_BackupDB">Respaldo-BD</button>
+            <button data-func="load_RestoreDB">Restaurar-BD</button>
+            <button data-func="load_RIFRenamer">Renombrar-RIF</button>
+            <button data-func="load_ExitIDU">Salir-IDU</button>
+            <button data-func="load_DisableASLR">Desactivar-ASLR</button>
+            <button data-func="load_ModuleDumper">Volcado-Módulos</button>
+            <button data-func="load_PermanentUART">UART-Permanente</button>
+            <button data-func="load_PUPDecrypt">Descifrar-PUP</button>
+          </div>
+      </div>
+      <div id="payloads-game" style="display: none;">
+        <h2 id="tools">Juegos</h2>
+          <div class="button-container" id="button-container">
+            <button data-func="load_GTAArbic">GTAV-ArabicGuy-1.27</button>
+            <button data-func="load_GTAArbic3">GTAV-ArabicGuy-1.32</button>
+            <button data-func="load_GTAArbic33">GTAV-ArabicGuy-1.33</button>
+            <button data-func="load_GTABQ133">GTAV-BeefQueef-1.33</button>
+            <button data-func="load_GTABQ134">GTAV-BeefQueef-1.34</button>
+            <button data-func="load_GTABQ138">GTAV-BeefQueef-1.38</button>
+            <button data-func="load_GTAWM132">GTAV-WildeModz-1.32</button>
+            <button data-func="load_GTAWM133">GTAV-WildeModz-1.33</button>
+            <button data-func="load_GTAWM138">GTAV-WildeModz-1.38</button>
+            <button data-func="load_Oysters100">RDR2-Oysters-1.00</button>
+            <button data-func="load_Oysters113">RDR2-Oysters-1.13</button>
+            <button data-func="load_Oysters119">RDR2-Oysters-1.19</button>
+            <button data-func="load_Oysters124">RDR2-Oysters-1.24</button>
+            <button data-func="load_Oysters129">RDR2-Oysters-1.29</button>
+          </div>
+      </div>
+      <div id="payloads-linux" style="display: none;">
+          <h2 id="tools">Linux</h2>
+          <div class="button-container" id="button-container">
+            <h2 style="text-align: center;">PS4</h2>
+            <button data-func="load_Linux">1GB Vram</button>
+            <button data-func="load_Linux2gb">2GB Vram</button>
+            <button data-func="load_Linux3gb">3GB Vram</button>
+            <button data-func="load_Linux4gb">4GB Vram</button>
+            <h2 style="text-align: center;">PS4-PRO</h2>
+            <button data-func="load_Linux_PRO">1GB Vram</button>
+            <button data-func="load_Linux2gb_PRO">2GB Vram</button>
+            <button data-func="load_Linux3gb_PRO">3GB Vram</button>
+            <button data-func="load_Linux4gb_PRO">4GB Vram</button>
+            <h2 style="text-align: center;">PS4-Baikal</h2>
+            <button data-func="load_Linux_Baikal">1GB Vram</button>
+            <button data-func="load_Linux2gb_Baikal">2GB Vram</button>
+            <button data-func="load_Linux3gb_Baikal">3GB Vram</button>
+            <button data-func="load_Linux4gb_Baikal">4GB Vram</button>
+            <h2 style="text-align: center;">PS4-Baikal-PRO</h2>
+            <button data-func="load_Linux_PRO_Baikal">1GB Vram</button>
+            <button data-func="load_Linux2gb_PRO_Baikal">2GB Vram</button>
+            <button data-func="load_Linux3gb_PRO_Baikal">3GB Vram</button>
+            <button data-func="load_Linux4gb_PRO_Baikal">4GB Vram</button>
+          </div>
+      </div>
+    </div>
+    
+    <div id="DebugConsole">
+      <h3>Consola de Depuración</h3>
+      <div class="console" style="padding: 20px;"><pre id='console'></pre></div>
+    </div>
+    
+    <!-- Popup Acerca de -->
+  <div class="overlay" id="overlay-popup"></div>
+  <div class="popup" id="about-popup" style="display: none; z-index: 1001;">
+    <button onclick="closeabout()" class="close-btn" id="close-about"></button>
+    
+    <div style="text-align: center; padding: 10px 0 20px 0;">
+      <div style="font-size: 52px; margin-bottom: 8px;">🎮</div>
+      <h2 style="color: #FFB84D; font-size: 30px; margin: 0; font-weight: 700;">PS4 - Pirateria</h2>
+      <div style="display: inline-block; background: #FFB84D; padding: 3px 22px; border-radius: 20px; margin-top: 8px;">
+        <span style="color: #1a1a2e; font-weight: 700; font-size: 13px; letter-spacing: 0.5px;">VERSIÓN 1.0.0</span>
+      </div>
+    </div>
+
+    <div style="width: 100%; max-width: 480px; margin: 0 auto; padding: 0 15px;">
+      <div style="background: rgba(255, 184, 77, 0.06); border-radius: 14px; padding: 18px; border: 1px solid rgba(255, 184, 77, 0.12);">
+        <p style="color: #bbb; font-size: 14px; line-height: 1.7; margin: 0; text-align: center;">
+          Interfaz web para Pirateria de PS4.<br>
+          Compatible con firmwares 7.00 - 9.60.
+        </p>
+      </div>
+
+      <div style="margin-top: 25px; text-align: center;">
+        <h3 style="color: #888; font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;">— Créditos —</h3>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <div style="background: rgba(255, 255, 255, 0.04); padding: 12px 30px; border-radius: 12px; border: 1px solid rgba(255, 184, 77, 0.12);">
+            <span style="color: #888; font-size: 11px; font-weight: 300; letter-spacing: 1px;">DESARROLLADO POR</span>
+            <div style="color: #FFB84D; font-size: 22px; font-weight: 700; margin-top: 4px;">TITO PRO</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 28px; text-align: center; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 18px;">
+        <div style="display: flex; justify-content: center; gap: 35px; flex-wrap: wrap;">
+          <div style="text-align: center;">
+            <div style="color: #FFB84D; font-size: 18px; font-weight: 700;">🔐</div>
+            <span style="color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Protegido</span>
+          </div>
+          <div style="text-align: center;">
+            <div style="color: #FFB84D; font-size: 18px; font-weight: 700;">⚡</div>
+            <span style="color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Rápido</span>
+          </div>
+          <div style="text-align: center;">
+            <div style="color: #FFB84D; font-size: 18px; font-weight: 700;">🛡️</div>
+            <span style="color: #555; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Seguro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Popup Ajustes -->
+    <div class="overlay" id="overlay-popup"></div>
+    <div class="popup" id="settings-popup">
+      <h2>Ajustes PS4 - Pirateria</h2>
+      <div class="main-container">
+        <div class="listfw-container">
+          <div class="settings-container">
+            <h3>Firmwares de PS4 soportados</h3>
+            <div id="listfw">
+              <p>7.00</p>
+              <p>7.01</p>
+              <p>7.02</p>
+              <p>7.50</p>
+              <p>7.51</p>
+              <p>7.55</p>
+              <p>8.00</p>
+              <p>8.01</p>
+              <p>8.03</p>
+              <p>8.50</p>
+              <p>8.52</p>
+              <p>9.00</p>
+              <p>9.03</p>
+              <p>9.04</p>
+              <p>9.50</p>
+              <p>9.51</p>
+              <p>9.60</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="choosejb-container">
+          <div class="settings-container">
+            <h3>Elige tu versión</h3>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="hen" value="GoldHEN" onchange="savejbflavor(); choosejb('GoldHEN')"> GoldHEN
+              </label>
+              <label>
+                <input type="radio" name="hen" value="HEN" onchange="savejbflavor(); choosejb('HEN')"> HEN
+              </label>
+            </div>
+              <label>
+                <input type="checkbox" id="ckbaj" />
+                <span>Jailbreak Automático</span>
+              </label>
+              <label>
+                <input type="checkbox" id="ckbdc" checked />
+                <span>Activar Consola de Depuración</span>
+              </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-container">
+        <button data-func="load_PSFreeFix" class="install-psfrf" id="install-psfrf" style="display: none;">Instalar PSFree-Fix</button>
+      </div>
+      <button onclick="closesettings()" class="close-btn" id="close-settings"></button>
+    </div>
+    <script src='./js/index.js'></script>
+  </body>
+</html>
